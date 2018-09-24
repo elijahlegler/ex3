@@ -1,29 +1,42 @@
-
 <?php
-$reg_user = new RegisteredUser('Regular User', user1);
-$admin_user = new Admin('Administrator', user2);
+function loadClass($class) {
+  include_once('classes/'.$class.'.class.php');
+}
 
-$admin_user->first_name = 'Bob';
-$admin_user->last_name = 'Smith';
-$admin_user->email_address = 'bobsmith@gmail.com';
+spl_autoload_register('loadClass');
 
-$reg_user->first_name = 'Victor';
-$reg_user->last_name = 'Oladipo';
-$reg_user->email_address = 'vicoladipo@pacers.com';
+$math = registeredUser::staticMath(4,5);
 
-echo 'User Level: ' . $reg_user->user_level;
-echo 'Registered User ID: ' . $reg_user->user_id;
-echo 'Registered User Type: ' . $reg_user->user_type;
-echo 'Registered First Name: ' . $reg_user->first_name;
-echo 'Registered Last Name: ' . $reg_user->last_name;
-echo 'Registered Email: ' . $reg_user->email_address;
 ?>
-<hr>
-<?php
-echo 'User Level: ' . $admin_user->user_level;
-echo 'Admin User ID: ' . $admin_user->user_id;
-echo 'Admin User Type: ' . $admin_user->user_type;
-echo 'Admin First Name: ' . $admin_user->first_name;
-echo 'Admin Last Name: ' . $admin_user->last_name;
-echo 'Admin Email: ' . $admin_user->email_address;
-?>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Excerise 3</title>
+</head>
+<body>
+<p>Before You Fill Out This Form, Let's Do Some Math!: <?php echo $math; ?></p>
+
+  <form method="post" id="registerForm" action="results.php">
+  <div>
+      <label for="name">First Name:  </label>
+      <input type="text" id="firstName" name="firstName" maxlength="20"  />
+  </div>
+<br>
+<br>
+  <div>
+      <label for="name">Last Name: </label>
+      <input type="text" id="lastName"  name="lastName" maxlength="20"  />
+  </div>
+<br>
+<br>
+  <div>
+      <label for="name">Email: </label>
+      <input type="text" id="email"  name="email" maxlength="20"  />
+  </div>
+<br>
+<br>
+    <input class="submit" id="submit" type="submit" value="Register" />
+  </form>
+
+</body>
+</html>
